@@ -36,6 +36,11 @@ public class JournalEntryControllerV2 {
         journalEntryService.saveEntry(myEntry);
         return myEntry;
     }
+    @DeleteMapping("/id/{myId}")
+    public boolean removeEntry(@PathVariable ObjectId myId){
+        journalEntryService.deletebyId(myId);
+        return true;
+    }
     @PutMapping("/id/{myId}")
     public JournalEntry updateEntry(@PathVariable ObjectId myId, @RequestBody JournalEntry newEntry){
         JournalEntry old = journalEntryService.findbyId(myId).orElse(null);
@@ -45,11 +50,5 @@ public class JournalEntryControllerV2 {
         }
         journalEntryService.saveEntry(old);
         return old;
-    }
-
-    @DeleteMapping("/id/{myId}")
-    public boolean removeEntry(@PathVariable ObjectId myId){
-        journalEntryService.deletebyId(myId);
-        return true;
     }
 }
