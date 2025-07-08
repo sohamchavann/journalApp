@@ -26,4 +26,7 @@ public class JournalEntryService {
     public void deletebyId(ObjectId id){
         journalEntryRepository.deleteById(id);
     }
+    public boolean checkId(ObjectId id){
+        return journalEntryRepository.existsById(id);
+    }
 }
