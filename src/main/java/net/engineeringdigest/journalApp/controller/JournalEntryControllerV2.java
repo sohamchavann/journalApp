@@ -49,6 +49,7 @@ public class JournalEntryControllerV2 {
     }
     @DeleteMapping("/id/{myId}")
     public ResponseEntity<?> removeEntry(@PathVariable ObjectId myId){
+        //wildcard makes func return type independent
         if(!journalEntryService.checkId(myId)) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         journalEntryService.deletebyId(myId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
